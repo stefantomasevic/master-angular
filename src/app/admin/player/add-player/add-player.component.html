@@ -1,0 +1,72 @@
+<!-- <div class="modal" tabindex="-1" role="dialog" *ngIf="isVisible">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Player</h5>
+          <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Here you can add player details.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   -->
+
+   <div class="modal" tabindex="-1" role="dialog" *ngIf="isVisible">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Player</h5>
+          <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" [(ngModel)]="player.firstName" name="firstName" required class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" [(ngModel)]="player.lastName" name="lastName" required class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" id="age" [(ngModel)]="player.age" name="age" required class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="position">Position</label>
+              <input type="text" id="position" [(ngModel)]="player.position" name="position" required class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="nationality">Nationality</label>
+              <input type="text" id="nationality" [(ngModel)]="player.nationality" name="nationality" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="teamId">Select Team</label>
+                <select id="teamId" [(ngModel)]="player.teamId" name="teamId" required class="form-control">
+                  <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
+                </select>
+              </div>
+            <div class="form-group">
+              <label for="logo">Logo</label>
+              <input type="file" id="logo" (change)="onFileChange($event)" class="form-control">
+            </div>
+           
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()" >Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

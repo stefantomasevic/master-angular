@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Card</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-end mb-3">
+            <a class="btn btn-primary">
+              <!-- <i class="fa fa-plus" aria-hidden="true"></i> Add New -->
+              <!-- <button (click)="openPlayerModal()" class="btn btn-primary">Add Player</button> -->
+              <button (click)="openModal()" class="btn btn-primary">Add Player</button>
+            </a>
+        </div>
+        <div class="row">
+            <div class="col-md-3" *ngFor="let player of players">
+                <div class="card mb-4">
+                      <img [src]="getImageUrl(player.imagePath)" class="card-img-top" alt="{{ player.firstname }} {{ player.lastname }}"> 
+                    <div class="card-body">
+                        <h5 class="card-title">{{ player.firstname }} {{ player.lastname }}</h5>
+                        <p class="card-text">
+                            <strong>Position:</strong> {{ player.position }}<br>
+                            <strong>Nationality:</strong> {{ player.nationality }}<br>
+                            <strong>Age:</strong> {{ player.age }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+ 
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<app-add-player [isVisible]="modalVisible" (close)="closeModal()"  (playerAdded)="onPlayerAdded()"></app-add-player>
+
+
+
+

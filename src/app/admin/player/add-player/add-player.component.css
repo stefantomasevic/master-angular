@@ -1,0 +1,5 @@
+.modal {
+    display: block; /* Prikaži modal */
+    background-color: rgba(0, 0, 0, 0.5); /* Poluprovidna pozadina */
+  }
+  

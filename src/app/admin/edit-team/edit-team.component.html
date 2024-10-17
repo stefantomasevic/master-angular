@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timovi</title>
+  <!-- Uključivanje Bootstrap CSS-a -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <form class="team-form" (ngSubmit)="editTeam()">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Name:</label>
+          <input type="text" id="name" [(ngModel)]="teamData.name" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="city">City:</label>
+          <input type="text" id="city" [(ngModel)]="teamData.city" name="city" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="country">Country:</label>
+          <input type="text" id="country" [(ngModel)]="teamData.country" name="country" class="form-control" required>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="coach">Coach:</label>
+          <input type="text" id="coach" [(ngModel)]="teamData.coach" name="coach" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-row align-items-center">
+        <div class="form-group col-md-6">
+          <label for="arena">Arena:</label>
+          <input type="text" id="arena" [(ngModel)]="teamData.arena" name="arena" class="form-control" required>
+        </div>
+
+        <div class="form-group col-md-4 d-flex align-items-center">
+          <img [src]="getImageUrl(teamData.logoPath)" alt="Team Logo" style="width: 100px; height: 100px;">
+          <div class="ml-3">
+            <label for="picture">New Picture:</label>
+            <input type="file" id="logo" (change)="onFileSelected($event)" accept="image/*" name="logo" class="form-control-file">
+          </div>
+        </div>
+      </div>
+
+      
+     
+    </form>
+  </div>
+  <div class="form-group col-md-12 d-flex justify-content-center mt-3">
+    <button [routerLink]="['/']" class="btn btn-primary mr-1">
+      <i class="fa fa-arrow-left"></i> Back
+    </button>
+    <button type="submit" class="btn btn-success">
+      <i class="fa fa-save"></i> Save
+    </button>
+  </div>
+
+  <!-- Uključivanje Bootstrap JS-a i Popper.js (opciono, za neke Bootstrap komponente) -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>
