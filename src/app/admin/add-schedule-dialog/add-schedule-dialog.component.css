@@ -1,0 +1,43 @@
+.modal-content {
+    background-color: #f8f9fa; /* svetla pozadina */
+    border-radius: 1rem; /* zaobljeni uglovi */
+  }
+  
+  .modal-header {
+    border-bottom: 1px solid #dee2e6; /* suptilna granica */
+  }
+  
+  .modal-title {
+    color: #007bff; /* plava boja naslova */
+  }
+  
+  .btn-close {
+    background-color: transparent;
+  }
+  
+  .modal-body {
+    padding: 2rem; /* dodatno punjenje */
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* primarna boja */
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* tamnija plava prilikom hover-a */
+    border-color: #0056b3;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .modal.fade {
+    animation: fadeIn 0.3s ease;
+  }
+    

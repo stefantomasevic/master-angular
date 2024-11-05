@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <h1 class="text-center" style="color: WHITE;">Raspored Utakmica</h1>
+  
+    <!-- Deo za selekciju datuma -->
+    <div class="row justify-content-end mt-5">
+        <div class="col-md-5">
+            <div class="mb-4 text-center" style="height: 50px; width: 50%;">
+                <label for="dateSelector" style="color: WHITE; font-size: 0.9rem; font-size: 20px;">Izaberite datum:</label>
+                <input type="date" id="dateSelector" class="form-control" [(ngModel)]="selectedDate" (change)="onDateChange($event)" style="height: 30px;" /> 
+            </div>
+        </div>
+        <div class="col-md-3 mt-3">
+            <button class="btn btn-primary ml-auto" (click)="openAddScheduleModal()">Add Game</button>
+        </div>
+    </div>
+    
+    
+    
+
+  
+    <!-- Tabela za prikazivanje rasporeda -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th class="text-center">Domaći Tim</th>
+          <th class="text-center">Vreme i Rezultat</th>
+          <th class="text-center">Gosti Tim</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schedule of schedule">
+          <!-- Domaći tim sa logom -->
+          <td class="text-center">
+            <img [src]="getImageUrl(schedule.homeLogo)" alt="{{ schedule.homeTeam }} Logo" style="width:50px;"/>
+            <div>{{ schedule.homeTeam }}</div>
+          </td>
+          
+          <!-- Vreme utakmice i rezultat -->
+          <td class="text-center">
+            <div>{{ schedule.gameTime | date:'short' }}</div>
+            <div *ngIf="schedule.homeScore !== null || schedule.guestScore !== null">
+              <strong>{{ schedule.homeScore !== null ? schedule.homeScore : '-' }}</strong> : 
+              <strong>{{ schedule.guestScore !== null ? schedule.guestScore : '-' }}</strong>
+            </div>
+          </td>
+          
+          <!-- Gosti tim sa logom -->
+          <td class="text-center">
+            <img [src]=" getImageUrl(schedule.guestLogo)" alt="{{ schedule.guestTeam }} Logo" style="width:50px;"/>
+            <div>{{ schedule.guestTeam }}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

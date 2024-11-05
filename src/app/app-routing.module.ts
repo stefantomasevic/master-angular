@@ -6,6 +6,8 @@ import { EditTeamComponent } from './admin/edit-team/edit-team.component';
 import { AddTeamComponent } from './admin/add-team/add-team.component';
 import { TeamPlayersComponent } from './admin/team-players/team-players.component';
 import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
+import { ScheduleComponent } from './admin/schedule/schedule.component';
+import { AddScheduleDialogComponent } from './admin/add-schedule-dialog/add-schedule-dialog.component';
 
 const routes: Routes = [
   {
@@ -16,9 +18,11 @@ const routes: Routes = [
       { path: 'add-team', component:AddTeamComponent  },
       { path: 'edit-team/:id', component: EditTeamComponent },
       { path: 'team-players/:id', component: TeamPlayersComponent },
-      { path: 'add-player/:id', component: AddPlayerComponent }
-      // Dodaj druge rute kako bi prikazivao druge komponente unutar WebLayoutComponent
-    ]
+      { path: 'add-player/:id', component: AddPlayerComponent },
+      { path: 'schedule', component: ScheduleComponent },
+      { path: 'add-schedule', component: AddScheduleDialogComponent }
+    ],
+
   }
 ];
 

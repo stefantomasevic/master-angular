@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { WebLayoutComponent } from './admin/layout/web-layout/web-layout.component';
 import { TeamListComponent } from './admin/team-list/team-list/team-list.component';
 import { EditTeamComponent } from './admin/edit-team/edit-team.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddTeamComponent } from './admin/add-team/add-team.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TeamPlayersComponent } from './admin/team-players/team-players.component';
 import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
+import { ScheduleComponent } from './admin/schedule/schedule.component';
+import { AddScheduleDialogComponent } from './admin/add-schedule-dialog/add-schedule-dialog.component';
 
 
 
@@ -25,6 +27,8 @@ import { AddPlayerComponent } from './admin/player/add-player/add-player.compone
     AddTeamComponent,
     TeamPlayersComponent,
     AddPlayerComponent,
+    ScheduleComponent,
+    AddScheduleDialogComponent,
     
     
     
@@ -35,6 +39,7 @@ import { AddPlayerComponent } from './admin/player/add-player/add-player.compone
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
