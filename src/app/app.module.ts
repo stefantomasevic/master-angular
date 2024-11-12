@@ -14,6 +14,7 @@ import { TeamPlayersComponent } from './admin/team-players/team-players.componen
 import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
 import { ScheduleComponent } from './admin/schedule/schedule.component';
 import { AddScheduleDialogComponent } from './admin/add-schedule-dialog/add-schedule-dialog.component';
+import { StatisticComponent } from './admin/statistic/statistic.component';
 
 
 
@@ -29,6 +30,7 @@ import { AddScheduleDialogComponent } from './admin/add-schedule-dialog/add-sche
     AddPlayerComponent,
     ScheduleComponent,
     AddScheduleDialogComponent,
+    StatisticComponent,
     
     
     
