@@ -8,6 +8,7 @@ import { TeamPlayersComponent } from './admin/team-players/team-players.componen
 import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
 import { ScheduleComponent } from './admin/schedule/schedule.component';
 import { AddScheduleDialogComponent } from './admin/add-schedule-dialog/add-schedule-dialog.component';
+import { StatisticComponent } from './admin/statistic/statistic.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'team-players/:id', component: TeamPlayersComponent },
       { path: 'add-player/:id', component: AddPlayerComponent },
       { path: 'schedule', component: ScheduleComponent },
-      { path: 'add-schedule', component: AddScheduleDialogComponent }
+      { path: 'add-schedule', component: AddScheduleDialogComponent },
+      {path: 'statistic', component:StatisticComponent}
     ],
 
   }

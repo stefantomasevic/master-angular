@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="text-center mb-4" style="color: white;">Statistika Utakmice</h2>
+  
+    <div class="d-flex justify-content-center mb-3">
+      <button id="homeButton" class="btn btn-primary me-2" (click)="showHome()" style="color: white;">Domaćin</button>
+      <button id="guestButton" class="btn btn-secondary" (click)="showGuest()" style="color: white;">Gost</button>
+    </div>
+  
+    <h4 id="teamTitle" class="text-center" style="color: white;">{{ teamTitle }}</h4>
+  
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th>Ime Igrača</th>
+          <th>Poeni</th>
+          <th>Asistencije</th>
+          <th>Skokovi</th>
+          <th>Faulovi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of displayedPlayers">
+          <td>{{ player.name }}</td>
+          <td>{{ player.points }}</td>
+          <td>{{ player.assists }}</td>
+          <td>{{ player.rebounds }}</td>
+          <td>{{ player.fouls }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
