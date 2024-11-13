@@ -9,7 +9,7 @@ import { TeamManipulation } from 'src/app/models/teamManipulation';
 })
 export class TeamService {
 
-  private apiUrl = 'http://localhost:5053/api/Team';
+  private apiUrl = 'https://euroleague-api-master-production.up.railway.app/api/Team';
   
   
 
