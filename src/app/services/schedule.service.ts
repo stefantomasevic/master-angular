@@ -8,7 +8,7 @@ import { CreateScheduleDto } from '../models/createScheduleDto';
   providedIn: 'root'
 })
 export class ScheduleService {
-  private apiUrl = 'https://euroleague-api-master-production.up.railway.app/api/Schedule';
+  private apiUrl = 'https://euroleague-api-master.onrender.com/api/Schedule';
 
   
   

@@ -8,7 +8,7 @@ import { PlayerDto } from 'src/app/models/playerDto';
   providedIn: 'root'
 })
 export class PlayerService {
-  private apiUrl = 'https://euroleague-api-master-production.up.railway.app/api/Player';
+  private apiUrl = 'https://euroleague-api-master.onrender.com/api/Player';
 
 
   constructor(private http: HttpClient) { }
