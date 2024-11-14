@@ -36,7 +36,7 @@ export class TeamPlayersComponent implements OnInit {
   }
   
   getImageUrl(imagePath: string): string {
-    const baseUrl = 'http://localhost:5053/';
+    const baseUrl = 'https://euroleague-api-master.onrender.com/';
     return `${baseUrl}${imagePath}`;
   }
   openModal() {
