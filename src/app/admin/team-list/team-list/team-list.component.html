@@ -10,6 +10,8 @@
 <body>
   <div class="container mt-5">
     <div class="d-flex justify-content-end mb-3">
+      <button [routerLink]="['/schedule']" class="btn btn-success">Schedule</button>
+
       <a routerLink="/add-team" class="btn btn-primary">
         <i class="fa fa-plus" aria-hidden="true"></i> Add New
       </a>
@@ -50,6 +52,7 @@
           <button class="btn btn-info" [routerLink]="['/team-players', team.id]" >
             <i class="fa fa-eye" aria-hidden="true"></i> View
           </button>
+          
         </td>
         </tr>
       </tbody>
