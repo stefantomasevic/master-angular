@@ -48,7 +48,7 @@ export class ScheduleComponent {
   }
   getImageUrl(imagePath: string): string {
     // Dodajte dinamički deo putanje ovde
-    const baseUrl = 'https://euroleague.onrender.com/';
+    const baseUrl = 'https://euroleague-api-master.onrender.com/';
     return `${baseUrl}${imagePath}`;
   }
 }
