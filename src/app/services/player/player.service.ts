@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Player } from 'src/app/models/player';
 import { PlayerDto } from 'src/app/models/playerDto';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
-  private apiUrl = 'https://euroleague-api-master.onrender.com/api/Player';
+  // private apiUrl = 'http://localhost:5053/api/Player';
+  private apiUrl = environment.apiUrl+ '/Player';
 
 
   constructor(private http: HttpClient) { }

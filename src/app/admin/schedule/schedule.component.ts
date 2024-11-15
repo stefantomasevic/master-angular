@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ScheduleDto } from 'src/app/models/scheduleDto';
 import { ScheduleService } from 'src/app/services/schedule.service';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-schedule',
@@ -15,6 +16,8 @@ export class ScheduleComponent {
   isModalOpen = false;
   schedule:ScheduleDto[]=[];
   selectedDate: string = '';
+  private apiUrl = environment.apiUrl;
+
 
   ngOnInit(): void {
     const today = new Date();
@@ -48,7 +51,9 @@ export class ScheduleComponent {
   }
   getImageUrl(imagePath: string): string {
     // Dodajte dinamički deo putanje ovde
-    const baseUrl = 'https://euroleague-api-master.onrender.com/';
+    // const baseUrl = 'https://euroleague-api-master.onrender.com/';
+    const baseUrl = this.apiUrl.split('api')[0];
+
     return `${baseUrl}${imagePath}`;
   }
 }

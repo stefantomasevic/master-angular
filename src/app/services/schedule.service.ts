@@ -3,12 +3,15 @@ import { Injectable } from '@angular/core';
 import {   ScheduleDto } from '../models/scheduleDto';
 import { Observable } from 'rxjs';
 import { CreateScheduleDto } from '../models/createScheduleDto';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScheduleService {
-  private apiUrl = 'https://euroleague-api-master.onrender.com/api/Schedule';
+  // private apiUrl = 'https://euroleague-api-master.onrender.com/api/Schedule';
+
+  private apiUrl = environment.apiUrl+'/Schedule';
 
   
   

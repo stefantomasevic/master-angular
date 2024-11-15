@@ -3,6 +3,7 @@ import { Team } from 'src/app/models/team';
 import { TeamService } from 'src/app/services/team/team.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { NgbModal, NgbModalConfig, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-team-list',
@@ -12,6 +13,7 @@ import { NgbModal, NgbModalConfig, NgbModalRef } from '@ng-bootstrap/ng-bootstra
 export class TeamListComponent {
 
   teams:Team[]=[];
+  private apiUrl = environment.apiUrl;
 
  
 
@@ -36,7 +38,9 @@ export class TeamListComponent {
 
   getImageUrl(imagePath: string): string {
     // Dodajte dinamički deo putanje ovde
-    const baseUrl = 'https://euroleague-api-master.onrender.com/';
+    // const baseUrl = 'https://euroleague-api-master.onrender.com/';
+    const baseUrl = this.apiUrl.split('api')[0];
+
     return `${baseUrl}${imagePath}`;
   }
   deleteTeam(teamId: number) {

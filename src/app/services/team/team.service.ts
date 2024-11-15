@@ -3,14 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Team } from 'src/app/models/team';
 import { TeamManipulation } from 'src/app/models/teamManipulation';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
 
-  private apiUrl = 'https://euroleague-api-master.onrender.com/api/Team';
-  
+  // private apiUrl = 'https://euroleague-api-master.onrender.com/api/Team';
+  private apiUrl = environment.apiUrl+ '/Team';
   
 
   constructor(private http: HttpClient) { }

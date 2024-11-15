@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Player } from 'src/app/models/player';
 import { ModalService } from 'src/app/services/modal.service';
 import { PlayerService } from 'src/app/services/player/player.service';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-team-players',
@@ -14,6 +15,7 @@ export class TeamPlayersComponent implements OnInit {
   players: Player []=[];
   teamId : number = 0;
   modalVisible = false;
+  private apiUrl = environment.apiUrl;
   
 
   constructor( private playerService:PlayerService, private route: ActivatedRoute, private modalService:ModalService) {
@@ -36,7 +38,8 @@ export class TeamPlayersComponent implements OnInit {
   }
   
   getImageUrl(imagePath: string): string {
-    const baseUrl = 'https://euroleague-api-master.onrender.com/';
+    // const baseUrl = 'https://euroleague-api-master.onrender.com/';
+    const baseUrl = this.apiUrl.split('api')[0];
     return `${baseUrl}${imagePath}`;
   }
   openModal() {

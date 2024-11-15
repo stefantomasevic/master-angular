@@ -45,7 +45,13 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environment/environment.ts",
+                  "with": "src/environment/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "buildOptimizer": false,
@@ -53,7 +59,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environment/environment.prod.ts",
+                  "with": "src/environment/environment.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -94,7 +106,6 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
-            
           }
         }
       }
@@ -104,4 +115,3 @@
     "analytics": "2b9e23e8-2e74-48dc-8a56-0e631ee8df97"
   }
 }
-
