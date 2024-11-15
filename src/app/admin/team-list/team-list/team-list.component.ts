@@ -39,7 +39,7 @@ export class TeamListComponent {
   getImageUrl(imagePath: string): string {
     // Dodajte dinamički deo putanje ovde
     // const baseUrl = 'https://euroleague-api-master.onrender.com/';
-    const baseUrl = this.apiUrl.split('api')[0];
+    const baseUrl = this.apiUrl.substring(0, this.apiUrl.lastIndexOf('api'));;
 
     return `${baseUrl}${imagePath}`;
   }

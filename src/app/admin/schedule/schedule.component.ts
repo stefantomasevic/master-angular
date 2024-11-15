@@ -53,6 +53,7 @@ export class ScheduleComponent {
     // Dodajte dinamički deo putanje ovde
     // const baseUrl = 'https://euroleague-api-master.onrender.com/';
     const baseUrl = this.apiUrl.split('api')[0];
+    
 
     return `${baseUrl}${imagePath}`;
   }
