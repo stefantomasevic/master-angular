@@ -14,6 +14,8 @@ export class TeamListComponent {
 
   teams:Team[]=[];
   private apiUrl = environment.apiUrl;
+  isLoggedIn: boolean = false;
+
 
  
 
@@ -25,6 +27,8 @@ export class TeamListComponent {
   ngOnInit(): void {
 
     this.getTeams();
+    this.isLoggedIn = !!localStorage.getItem('token');
+
     
   }
 
@@ -37,8 +41,7 @@ export class TeamListComponent {
   }
 
   getImageUrl(imagePath: string): string {
-    // Dodajte dinamički deo putanje ovde
-    // const baseUrl = 'https://euroleague-api-master.onrender.com/';
+
     const baseUrl = this.apiUrl.substring(0, this.apiUrl.lastIndexOf('api'));;
 
     return `${baseUrl}${imagePath}`;

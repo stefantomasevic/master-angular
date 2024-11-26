@@ -17,12 +17,14 @@ export class ScheduleComponent {
   schedule:ScheduleDto[]=[];
   selectedDate: string = '';
   private apiUrl = environment.apiUrl;
+  isLoggedIn: boolean = false;
 
 
   ngOnInit(): void {
     const today = new Date();
     this.selectedDate = today.toISOString().slice(0, 10); 
     this.getSchedule(today);
+    this.isLoggedIn = !!localStorage.getItem('token');
 
   }
   constructor(private router: Router, private scheduleService:ScheduleService) {}

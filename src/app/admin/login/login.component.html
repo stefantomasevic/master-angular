@@ -1,0 +1,22 @@
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="card shadow-lg" style="width: 100%; max-width: 400px;">
+    <div class="card-body">
+      <h4 class="card-title text-center mb-4">Prijavi se</h4>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="mb-3">
+          <label for="username" class="form-label">User Name</label>
+          <input id="username" name="username" ngModel required type="text" class="form-control" placeholder="Please enter user name" />
+        </div>
+        
+        <div class="mb-3">
+          <label for="password" class="form-label">Lozinka</label>
+          <input id="password" name="password" ngModel required type="password" class="form-control" placeholder="Enter password" />
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+        
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">{{ errorMessage }}</div>
+      </form>
+    </div>
+  </div>
+</div>

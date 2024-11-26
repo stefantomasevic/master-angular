@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PlayerSatistic } from 'src/app/models/playerStatistic';
+import { ScheduleStatisticDto } from 'src/app/models/scheduleStatisticDto';
+import { StatisticService } from 'src/app/services/statistic/statistic.service';
 
 @Component({
   selector: 'app-statistic',
@@ -7,36 +10,49 @@ import { PlayerSatistic } from 'src/app/models/playerStatistic';
   styleUrls: ['./statistic.component.css']
 })
 export class StatisticComponent {
+
+  constructor(private statisticsService: StatisticService, private route: ActivatedRoute) {}
+
   teamTitle: string = 'Domaćin';
   displayedPlayers: PlayerSatistic[] = [];
+  scheduleStatistics: ScheduleStatisticDto | null | undefined = null;
+  selectedTeam: 'home' | 'guest' = 'home';
+  scheduleId: number | undefined = undefined;
+  noDataAvailable: boolean = false; // Flag to show "No data available"
 
-  // Podaci za domaćina
-  homePlayers: PlayerSatistic[] = [
-    { name: 'Marko Petrović', points: 15, assists: 5, rebounds: 7, fouls: 2 },
-    { name: 'Nikola Jovanović', points: 20, assists: 3, rebounds: 10, fouls: 3 },
-    { name: 'Petar Ilić', points: 8, assists: 7, rebounds: 4, fouls: 1 }
-  ];
-
-  // Podaci za goste
-  guestPlayers: PlayerSatistic[] = [
-    { name: 'Ivan Marković', points: 12, assists: 6, rebounds: 8, fouls: 2 },
-    { name: 'Stefan Antić', points: 18, assists: 4, rebounds: 5, fouls: 3 },
-    { name: 'Jovan Simić', points: 10, assists: 2, rebounds: 6, fouls: 1 }
-  ];
-
-  ngOnInit(): void {
-    this.showHome();
+  async ngOnInit(): Promise<void> {
+    this.route.params.subscribe(async params => {
+      this.scheduleId = +params['id']; // Extract the 'id' parameter from the URL
+      if (this.scheduleId) {
+        await this.GetStatistic(); // Call GetStatistic with the extracted scheduleId
+      }
+    });
   }
 
-  // Funkcija za prikaz domaćina
-  showHome(): void {
-    this.teamTitle = 'Domaćin';
-    this.displayedPlayers = this.homePlayers;
+  async GetStatistic() {
+    try {
+      if (this.scheduleId) {
+        const data = await this.statisticsService.getStatisticsByScheduleId(this.scheduleId).toPromise();
+        this.scheduleStatistics = data;
+        console.log(data); // Print loaded data
+        this.processScheduleStatistics(); // Process the data
+      }
+    } catch (err) {
+
+         this.noDataAvailable = true; 
+
+    }
   }
 
-  // Funkcija za prikaz gostiju
-  showGuest(): void {
-    this.teamTitle = 'Gost';
-    this.displayedPlayers = this.guestPlayers;
+  processScheduleStatistics(): void {
+    if (this.scheduleStatistics) {
+      console.log('Učitani podaci:', this.scheduleStatistics);
+    }
   }
+
+  selectTeam(team: 'home' | 'guest'): void {
+    this.selectedTeam = team;
+  }
+
+
 }
