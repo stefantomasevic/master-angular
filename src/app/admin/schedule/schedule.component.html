@@ -37,6 +37,7 @@
             <strong>{{ schedule.homeScore !== null ? schedule.homeScore : '-' }}</strong> :
             <strong>{{ schedule.guestScore !== null ? schedule.guestScore : '-' }}</strong>
           </div>
+          <button class="btn btn-secondary" *ngIf="isLoggedIn" [routerLink]="['/admin-statistic', schedule.id]">Update statistic</button>
         </td>
 
         <!-- Guest team with logo -->

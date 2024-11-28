@@ -16,6 +16,7 @@ export class TeamPlayersComponent implements OnInit {
   teamId : number = 0;
   modalVisible = false;
   private apiUrl = environment.apiUrl;
+  isLoggedIn: boolean = false;
   
 
   constructor( private playerService:PlayerService, private route: ActivatedRoute, private modalService:ModalService) {
@@ -25,6 +26,7 @@ export class TeamPlayersComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.teamId = +params['id'];
+      this.isLoggedIn = !!localStorage.getItem('token');
       
     });
     this.getPlayers();

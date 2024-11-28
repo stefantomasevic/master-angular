@@ -1,1 +1,59 @@
-<p>admin-statistic works!</p>
+<div *ngIf="scheduleStatistics" class="schedule-container">
+    <h1 class="text-center">Game details</h1>
+  
+    <!-- Dugmadi za selektovanje domaćeg i gostujućeg tima -->
+    <div class="team-selection text-center">
+      <button (click)="selectTeam('home')" [class.selected]="selectedTeam === 'home'" class="team-button">
+        {{ scheduleStatistics.homeTeam }}
+      </button>
+      <span style="font-size: 2rem;">{{ scheduleStatistics.homeScore }} - {{ scheduleStatistics.guestScore }}</span>
+      <button (click)="selectTeam('guest')" [class.selected]="selectedTeam === 'guest'" class="team-button">
+        {{ scheduleStatistics.guestTeam }}
+      </button>
+    </div>
+  
+    <!-- Poruka kada nema statistike uopšte -->
+    <div *ngIf="noDataAvailable">
+      <p class="text-center">No data available for this game.</p>
+    </div>
+  
+    <!-- Prikazivanje statistike u zavisnosti od selektovanog tima -->
+    <h2 class="text-center">Statistic: {{ selectedTeam === 'home' ? 'Home Team' : 'Guest Team' }}</h2>
+  
+    <!-- Tabela sa statistikom igrača selektovanog tima -->
+    <table *ngIf="!noDataAvailable" class="stats-table table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Points</th>
+          <th>Asists</th>
+          <th>Rebounds</th>
+          <th>Fouls</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of selectedTeam === 'home' ? scheduleStatistics.homePlayers : scheduleStatistics.guestPlayers">
+          <td>{{ player.playerName }}</td>
+          <td>
+            {{ player.statistics.points }}
+             <button (click)="updatePoints(player.playerId,1,selectedTeam === 'home')" class="btn btn-sm btn-success ms-2">+1</button>
+            <button (click)="updatePoints(player.playerId,2,selectedTeam === 'home')" class="btn btn-sm btn-primary ms-2">+2</button>
+            <button (click)="updatePoints(player.playerId,3,selectedTeam === 'home')" class="btn btn-sm btn-warning ms-2">+3</button>
+          </td>
+          <td>
+            {{ player.statistics.asists }}
+            <button (click)="updateAsists(player.playerId,1)" class="btn btn-sm btn-success ms-2">+1</button>
+          </td>
+          <td>
+            {{ player.statistics.rebounds }}
+            <button (click)="updateRebounds(player.playerId,1)" class="btn btn-sm btn-success ms-2">+1</button>
+          </td>
+          <td>
+            {{ player.statistics.fouls }}
+            <button (click)="updateFouls(player.playerId,1)" class="btn btn-sm btn-danger ms-2">+1</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

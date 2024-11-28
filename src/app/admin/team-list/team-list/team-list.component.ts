@@ -28,7 +28,7 @@ export class TeamListComponent {
 
     this.getTeams();
     this.isLoggedIn = !!localStorage.getItem('token');
-
+  
     
   }
 

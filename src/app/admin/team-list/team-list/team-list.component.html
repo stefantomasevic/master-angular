@@ -9,10 +9,10 @@
 </head>
 <body>
   <div class="container mt-5">
-    <div class="d-flex justify-content-end mb-3" *ngIf="isLoggedIn">
+    <div class="d-flex justify-content-end mb-3" >
       <button [routerLink]="['/schedule']" class="btn btn-success">Schedule</button>
 
-      <a routerLink="/add-team" class="btn btn-primary">
+      <a routerLink="/add-team" class="btn btn-primary" *ngIf="isLoggedIn">
         <i class="fa fa-plus" aria-hidden="true"></i> Add New
       </a>
     </div>

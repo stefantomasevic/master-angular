@@ -8,10 +8,10 @@
 </head>
     <div class="container mt-5">
         <div class="d-flex justify-content-end mb-3">
-            <a class="btn btn-primary">
+            <a class="btn btn-primary" *ngIf="isLoggedIn">
               <!-- <i class="fa fa-plus" aria-hidden="true"></i> Add New -->
               <!-- <button (click)="openPlayerModal()" class="btn btn-primary">Add Player</button> -->
-              <button (click)="openModal()" class="btn btn-primary">Add Player</button>
+              <button  (click)="openModal()" class="btn btn-primary">Add Player</button>
             </a>
         </div>
         <div class="row">

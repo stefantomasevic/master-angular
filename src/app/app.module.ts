@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,9 @@ import { AddPlayerComponent } from './admin/player/add-player/add-player.compone
 import { ScheduleComponent } from './admin/schedule/schedule.component';
 import { AddScheduleDialogComponent } from './admin/add-schedule-dialog/add-schedule-dialog.component';
 import { StatisticComponent } from './admin/statistic/statistic.component';
+import { LoginComponent } from './admin/login/login.component';
+import { SignInComponent } from './admin/sign-in/sign-in.component';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 
 
@@ -33,7 +36,6 @@ import { StatisticComponent } from './admin/statistic/statistic.component';
     StatisticComponent,
     
     
-    
   ],
   imports: [
     NgbModule,
@@ -42,8 +44,10 @@ import { StatisticComponent } from './admin/statistic/statistic.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    LoginComponent,
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptors([authInterceptor]))
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

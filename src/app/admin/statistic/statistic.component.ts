@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlayerSatistic } from 'src/app/models/playerStatistic';
 import { ScheduleStatisticDto } from 'src/app/models/scheduleStatisticDto';
+import { SignalRService } from 'src/app/services/signalR/signal-r.service';
 import { StatisticService } from 'src/app/services/statistic/statistic.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { StatisticService } from 'src/app/services/statistic/statistic.service';
 })
 export class StatisticComponent {
 
-  constructor(private statisticsService: StatisticService, private route: ActivatedRoute) {}
+  constructor(private statisticsService: StatisticService, private route: ActivatedRoute, private signalRService: SignalRService) {}
 
   teamTitle: string = 'Domaćin';
   displayedPlayers: PlayerSatistic[] = [];
@@ -25,6 +26,18 @@ export class StatisticComponent {
       this.scheduleId = +params['id']; // Extract the 'id' parameter from the URL
       if (this.scheduleId) {
         await this.GetStatistic(); // Call GetStatistic with the extracted scheduleId
+      }
+    });
+    this.signalRService.startConnection();
+    
+    // Start listening for statistics updates
+    this.signalRService.listenForStatisticsUpdates();
+
+    // Subscribe to updated statistics from SignalR service
+    this.signalRService.statistics$.subscribe(updatedStatistics => {
+      if (updatedStatistics && updatedStatistics.scheduleId === this.scheduleId) {
+        this.scheduleStatistics = updatedStatistics;
+        this.processScheduleStatistics(); // Process updated data
       }
     });
   }
@@ -54,5 +67,7 @@ export class StatisticComponent {
     this.selectedTeam = team;
   }
 
-
+  ngOnDestroy(): void {
+    this.signalRService.stopConnection(); // Clean up SignalR connection when component is destroyed
+  }
 }
